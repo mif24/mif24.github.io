@@ -3726,3 +3726,21 @@ pre .coffeescript .title {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
+:root {
+  --primary: #e67460;
+  --primary-70: rgba(230, 116, 96, 0.7);
+  --primary-50: rgba(230, 116, 96, 0.5);
+  --primary-30: rgba(230, 116, 96, 0.3);
+  --primary-weak: #e67460;
+  --primary-weak-50: rgba(230, 116, 96, 0.5);
+  /*正常颜色*/
+}
+:root.dark {
+  --primary: #697be2;
+  --primary-70: rgba(105, 123, 226, 0.7);
+  --primary-50: rgba(105, 123, 226, 0.5);
+  --primary-30: rgba(105, 123, 226, 0.3);
+  --primary-weak: #697be2;
+  --primary-weak-50: rgba(105, 123, 226, 0.5);
+  /*深色主题颜色*/
+}
