@@ -14,10 +14,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="三层架构1.controller:控制层，接收前端发送的请求，对请求进行处理，并响应数据 2.service：业务逻辑层，处理具体的业务逻辑 3.dao：数据访问层，负责数据访问操作，包括数据的增删查改 分层解耦内聚：软件中各个功能模块内部的功能联系 耦合：衡量软件中各个层&#x2F;模块之间的依赖，关联程度 软件设计原则：高内聚低耦合 控制反转：IOC  对象的创建控制权由程序自身转移到外部（容">
 <meta property="og:locale">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
 <meta property="article:published_time" content="2026-03-19T15:05:45.000Z">
-<meta property="article:modified_time" content="2026-03-19T15:47:04.227Z">
+<meta property="article:modified_time" content="2026-03-19T15:50:02.682Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
 
 
 <title >三层架构</title>
@@ -63,7 +66,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["mif Website"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"log.svg","icon16":"log.svg","icon32":"log.svg","apple_touch_icon":"log.svg","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-03-19 23:47:04"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-03-19 23:50:02"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
@@ -379,7 +382,7 @@
 <p>控制反转：IOC  对象的创建控制权由程序自身转移到外部（容器）</p>
 <p>依赖注入：DI  容器为应用程序提供运行时，所依赖的资源，称之为依赖注入</p>
 <p>Bean对象：IOC容器中创建、管理的对象，称之为bean</p>
-<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260316155629677.png">https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260316155629677.png</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260316155629677.png" alt="我的照片"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <h2 id="IOC-DI入门"><a href="#IOC-DI入门" class="headerlink" title="IOC&amp;DI入门"></a>IOC&amp;DI入门</h2><p>1）Service层及Dao层的实现类，交给IOC容器管理</p>
 <p>2）为Controller及Service注入运行时，依赖的对象</p>
 <p>3）运行测试</p>
@@ -388,7 +391,7 @@
 <p>@Resource和@Autowired的区别</p>
 <p>@Autowried是spring框架提供的注解，而@Resource是JDK提供的注解</p>
 <p>@Autowried默认是按照类型注入，而@Resource默认是按照名称注入</p>
-<h2 id="Bean的声明："><a href="#Bean的声明：" class="headerlink" title="Bean的声明："></a>Bean的声明：</h2><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260316160506697.png">https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260316160506697.png</a></p>
+<h2 id="Bean的声明："><a href="#Bean的声明：" class="headerlink" title="Bean的声明："></a>Bean的声明：</h2><p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260316160506697.png" alt="我的照片"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <p>注：1）@RestController:包括@ResponseBody和@Controller两个注解</p>
 <p>​	2）声明bean的时候，可以通过value属性指定bean的名字，如果没有指定，默认为类名首字母小写</p>
 <p>​	3）使用以上四个注解都可以声明bean，但是在springboot集成web开发中，声明控制器bean只能用@Controller</p>
