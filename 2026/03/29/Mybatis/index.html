@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Mybatis简介：Mybatis是用于简化JDBC开发的dao层框架 Mybatis使用步骤：1.准备工作：创建springboot工程，数据库表，对应实体类 2.引入Mybatis的相关依赖，配置Mybatis（数据库连接信息） 3.编写SQL语句（注解&#x2F;XML） 配置SQL提示在idea中配置MySQL数据库连接 数据库连接池数据库连接池是一个容器，负责分配、管理数据库连接（Con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis">
+<meta property="og:url" content="http://example.com/2026/03/29/Mybatis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Mybatis简介：Mybatis是用于简化JDBC开发的dao层框架 Mybatis使用步骤：1.准备工作：创建springboot工程，数据库表，对应实体类 2.引入Mybatis的相关依赖，配置Mybatis（数据库连接信息） 3.编写SQL语句（注解&#x2F;XML） 配置SQL提示在idea中配置MySQL数据库连接 数据库连接池数据库连接池是一个容器，负责分配、管理数据库连接（Con">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2026-03-29T10:04:07.000Z">
+<meta property="article:modified_time" content="2026-03-29T10:04:49.739Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+
+<title >Mybatis</title>
+
+<!-- Favicon -->
+
+    <link href='/log.svg?v=2.2.6' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/log.svg?v=2.2.6' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/log.svg?v=2.2.6' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["mif Website"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"log.svg","icon16":"log.svg","icon32":"log.svg","apple_touch_icon":"log.svg","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-03-29 18:04:49"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/log.svg">
+    
+    
+        <div class="trm-logo-text">
+            M<span>IF</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/" target="">
+                            分类
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/music/" target="">
+                    音乐
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/2026-01-31-12-00-49-960x640.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            Welcome to JAVA
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Mybatis
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2026
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/cat.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        MIF
+    </h5>
+    
+        <div class="trm-label">
+            My
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/mif24" title="github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                planet:
+            </div>
+            <div class="trm-label trm-label-light">
+                Neptune
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                4
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:351769531@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/29
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            18:04
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><p>简介：Mybatis是用于简化JDBC开发的dao层框架</p>
+<h2 id="Mybatis使用步骤："><a href="#Mybatis使用步骤：" class="headerlink" title="Mybatis使用步骤："></a>Mybatis使用步骤：</h2><p>1.准备工作：创建springboot工程，数据库表，对应实体类</p>
+<p>2.引入Mybatis的相关依赖，配置Mybatis（数据库连接信息）</p>
+<p>3.编写SQL语句（注解&#x2F;XML）</p>
+<h2 id="配置SQL提示"><a href="#配置SQL提示" class="headerlink" title="配置SQL提示"></a>配置SQL提示</h2><p>在idea中配置MySQL数据库连接</p>
+<h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><p>数据库连接池是一个容器，负责分配、管理数据库连接（Connection）</p>
+<p>它允许应用程序重复使用一个现有的数据库连接，而不用重新建立一个</p>
+<p>释放空闲时间超过最大空闲时间的连接，来避免因为没有释放连接而引起的数据连接遗漏</p>
+<p>优势：1）资源重用，2）提高系统的响应速度，3）避免数据库连接遗漏</p>
+<p>标准接口：DataSource</p>
+<p>功能：获取连接  Connection getConnection() throws SQLException;</p>
+<h2 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h2><p>Lombok是一个Java类库，能通过注解的形式自动生成构造器，getter&#x2F;setter,equals,hashcode,toString等方法，并且可以自动化生成日志变量。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260318202838064.png" alt="image-20260318202838064"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="Mybatis基础操作"><a href="#Mybatis基础操作" class="headerlink" title="Mybatis基础操作"></a>Mybatis基础操作</h2><h3 id="参数占位符："><a href="#参数占位符：" class="headerlink" title="参数占位符："></a>参数占位符：</h3><p>#{…}：执行SQL时，会将#{…}替换为？，生成预编译SQL，会自动设置参数值</p>
+<p>使用时机：参数传递，都使用#{…}</p>
+<p>${…}：拼接SQL，直接将参数拼接在SQL语句中，存在SQL注入问题。</p>
+<p>使用实际：如果对表名、列表进行动态设置时使用</p>
+<h3 id="预编译SQL"><a href="#预编译SQL" class="headerlink" title="预编译SQL"></a>预编译SQL</h3><p>优势：性能更高，更加安全（防止SQL注入）</p>
+<p>注：SQL注入是通过操作输入数据来修改事先定义好的SQL语句，以达到代码对服务器攻击的方法</p>
+<h3 id="根据主键删除"><a href="#根据主键删除" class="headerlink" title="根据主键删除"></a>根据主键删除</h3><p>eg：SQL语句：delete from emp where id &#x3D; 17;</p>
+<p>接口方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//根据ID删除数据</span><br><span class="line">@Delete(&quot;delete from emp where id = #&#123;id&#125;&quot;)</span><br><span class="line">public int delete(Integer id);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//新增数据</span><br><span class="line">@Insert(&quot;insert into emp(username,name,gender,image,job,entrydate,dept_id,create_time,update_time)&quot;+</span><br><span class="line">&quot;values(#&#123;username&#125;,#&#123;name&#125;,#&#123;gender&#125;,#&#123;image&#125;,#&#123;job&#125;,#&#123;entrydate&#125;,#&#123;deptId&#125;,#&#123;createTime&#125;,#&#123;updateTime&#125;)&quot;)</span><br><span class="line">public void insert(Emp emp);</span><br><span class="line">public void insert(Emp emp);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testDelete()&#123;</span><br><span class="line">    Emp emp = new Emp();</span><br><span class="line">    emp.setUsername(&quot;tim&quot;);</span><br><span class="line">    emp.setName(&quot;TIM&quot;);</span><br><span class="line">    emp.setImage(&quot;1.jpg&quot;);</span><br><span class="line">    emp.setGender((short)1);</span><br><span class="line">    emp.setJob((short)1);</span><br><span class="line">    emp.setEntrydate(LocalDate.of(2003,11,2));</span><br><span class="line">    emp.setCreateTime(LocalDateTime.now());</span><br><span class="line">    emp.setUpdateTime(LocalDateTime.now());</span><br><span class="line">    emp.setDeptId(16);</span><br><span class="line">    empMapper.insert(emp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>新增（主键返回）</p>
+<p>在数据添加成功后，需要获取插入数据库数据的主键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Options(useGeneratedKeys = true,keyProperty = &quot;id&quot;)//获取返回的主键</span><br><span class="line">@Insert(&quot;insert into emp(username,name,gender,image,job,entrydate,dept_id,create_time,update_time)&quot;+</span><br><span class="line">&quot;values(#&#123;username&#125;,#&#123;name&#125;,#&#123;gender&#125;,#&#123;image&#125;,#&#123;job&#125;,#&#123;entrydate&#125;,#&#123;deptId&#125;,#&#123;createTime&#125;,#&#123;updateTime&#125;)&quot;)</span><br><span class="line">public void insert(Emp emp);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>更新数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Update(&quot;update emp set username=#&#123;username&#125;,name=#&#123;name&#125;,gender=#&#123;gender&#125;,image=#&#123;image&#125;,job=#&#123;job&#125;,entrydate=#&#123;entrydate&#125;,dept_id=#&#123;deptId&#125;,update_time=#&#123;updateTime&#125; where id = #&#123;id&#125;&quot;)</span><br><span class="line">public void update(Emp emp);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testUpdate()&#123;</span><br><span class="line">    Emp emp = new Emp();</span><br><span class="line">    emp.setId(1);</span><br><span class="line">    emp.setUsername(&quot;tim4&quot;);</span><br><span class="line">    emp.setName(&quot;TIM4&quot;);</span><br><span class="line">    emp.setImage(&quot;1.jpg&quot;);</span><br><span class="line">    emp.setGender((short)1);</span><br><span class="line">    emp.setJob((short)1);</span><br><span class="line">    emp.setEntrydate(LocalDate.of(2003,11,2));</span><br><span class="line">    emp.setUpdateTime(LocalDateTime.now());</span><br><span class="line">    emp.setDeptId(2);</span><br><span class="line">    empMapper.update(emp);</span><br><span class="line">    System.out.println(emp.getId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查询（根据ID查询）"><a href="#查询（根据ID查询）" class="headerlink" title="查询（根据ID查询）"></a>查询（根据ID查询）</h3><p>数据封装</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260319225809399.png" alt="image-20260319225809399"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>解决办法</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260319225821685.png" alt="image-20260319225821685"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="查询（根据条件查询）"><a href="#查询（根据条件查询）" class="headerlink" title="查询（根据条件查询）"></a>查询（根据条件查询）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from emp where name like &#x27;%$&#123;name&#125;%&#x27; and gender = #&#123;gender&#125; and &quot;+</span></span><br><span class="line"><span class="meta">&quot;entrydate between #&#123;begin&#125; and #&#123;end&#125; order by update_time desc&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;Emp&gt; <span class="title function_">list</span><span class="params">(String name, Short gender, LocalDate begin, LocalDate end)</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSelect2</span><span class="params">()</span>&#123;</span><br><span class="line">    List&lt;Emp&gt; emp = emp = empMapper.list(<span class="string">&quot;张&quot;</span>,Short.valueOf((<span class="type">short</span>) <span class="number">1</span>),LocalDate.of(<span class="number">2010</span>,<span class="number">1</span>,<span class="number">1</span>),LocalDate.of(<span class="number">2027</span>,<span class="number">1</span>,<span class="number">1</span>) );</span><br><span class="line">    System.out.println(emp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>模糊查找不能使用#{}，所以这里使用了’%${name}%’,但使用了${}有sql注入风险</p>
+<p>另外的解决办法：<em>concat 字符串拼接函数</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;select * from emp where name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;) and gender = #&#123;gender&#125; and &quot;+</span><br><span class="line">&quot;entrydate between #&#123;begin&#125; and #&#123;end&#125; order by update_time desc&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="XML映射文件"><a href="#XML映射文件" class="headerlink" title="XML映射文件"></a>XML映射文件</h3><p>规范：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260329144117891.png" alt="image-20260329144117891"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>配置xml文件</p>
+<p>在resource文件夹下添加包，xml映射文件。列如：com&#x2F;xxx&#x2F;xxx（包名），新建文件xxxx.xml</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260329144913751.png" alt="image-20260329144913751"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>然后</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>(在Mybatis中文网中寻找<strong>探究已映射的 SQL 语句</strong>可以找到配置)</p>
+<p>例如</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">  <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">  <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.mybatis.example.BlogMapper&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectBlog&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;Blog&quot;</span>&gt;</span></span><br><span class="line">    select * from Blog where id = #&#123;id&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.itheima.mapper.EmpMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.itheima.pojo.Emp&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- id：对应的方法名--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- resultType：单条记录所封装的类型--&gt;</span></span><br><span class="line">        select * from emp where name like &#x27;%$&#123;name&#125;%&#x27; and gender = #&#123;gender&#125; and</span><br><span class="line">    entrydate between #&#123;begin&#125; and #&#123;end&#125; order by update_time desc</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>注：可以安装mybatisx插件：以便快速定位xml映射文件对应的方法</p>
+<p>使用注解来映射简单语句会使代码显得更加简洁，但对于稍微复杂一点的语句，Java 注解不仅力不从心，还会让你本就复杂的 SQL 语句更加混乱不堪。 因此，如果你需要做一些很复杂的操作，最好用 XML 来映射语句。</p>
+<p>选择何种方式来配置映射，以及认为是否应该要统一映射语句定义的形式，完全取决于你和你的团队。 换句话说，永远不要拘泥于一种方式，你可以很轻松的在基于注解和 XML 的语句映射方式间自由移植和切换。</p>
+<h3 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h3><p>随着用户输入或外部条件的变化而变化的sql语句，称之为动态SQL</p>
+<p>1.<if></p>
+<p><if>：用于判断条件是否成立，使用test属性进行条件判断，如果条件为true，则拼接SQL。</p>
+<p><where>:where元素只会在子元素有内容的情况下插入where子句。而且会自动去除子句开头的AND或OR。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">&lt;mapper namespace=&quot;com.itheima.mapper.EmpMapper&quot;&gt;</span><br><span class="line">    &lt;select id=&quot;list&quot; resultType=&quot;com.itheima.pojo.Emp&quot;&gt;</span><br><span class="line">        &lt;!-- resultType：单条记录所封装的类型--&gt;</span><br><span class="line">        select * from emp</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">            &lt;if test=&quot;name!=null&quot;&gt;</span><br><span class="line">                name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line">            &lt;/if&gt;</span><br><span class="line">            &lt;if test=&quot;gender!=null&quot;&gt;</span><br><span class="line">                and gender = #&#123;gender&#125;</span><br><span class="line">            &lt;/if&gt;</span><br><span class="line">            &lt;if test=&quot;begin != null and end != null&quot;&gt;</span><br><span class="line">                and entrydate between #&#123;begin&#125; and #&#123;end&#125;</span><br><span class="line">            &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">        order by update_time desc</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.<set>：（用在update语句中）动态地在行首插入SET关键字，并会删掉额外的逗号（例如下面代码中，如果没有使用<set>，我只输入username时会变成update emp set name &#x3D; ? , where id &#x3D; ? 此时这个,会导致sql语句出错，导致报错）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;update&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- resultType：单条记录所封装的类型--&gt;</span></span><br><span class="line">        update emp</span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;username != null&quot;</span>&gt;</span></span><br><span class="line">                username=#&#123;username&#125;,</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name != null&quot;</span>&gt;</span>name=#&#123;name&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;gender != null&quot;</span>&gt;</span>gender=#&#123;gender&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;image != null&quot;</span>&gt;</span>image=#&#123;image&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;job != null&quot;</span>&gt;</span>job=#&#123;job&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;entrydate != null&quot;</span>&gt;</span>entrydate=#&#123;entrydate&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;deptId != null&quot;</span>&gt;</span>dept_id=#&#123;deptId&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;updateTime != null&quot;</span>&gt;</span>update_time=#&#123;updateTime&#125;<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">        where id = #&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testUpdate</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">Emp</span> <span class="variable">emp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Emp</span>();</span><br><span class="line">    emp.setId(<span class="number">1</span>);</span><br><span class="line">    emp.setUsername(<span class="string">&quot;tiiiii4&quot;</span>);</span><br><span class="line">    emp.setName(<span class="string">&quot;TIMiiiii4&quot;</span>);</span><br><span class="line">    emp.setGender((<span class="type">short</span>)<span class="number">2</span>);</span><br><span class="line">    emp.setUpdateTime(LocalDateTime.now());</span><br><span class="line">    empMapper.update(emp);</span><br><span class="line">    System.out.println(emp.getId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.<foreach>:属性</p>
+<p>​	collection:遍历的集合<br>​        item:遍历出来的元素（要和#{}里面的元素一致）<br>​        separator:分隔符<br>​        open:遍历开始前拼接的sql片段<br>​        close:遍历结束后拼接的sql片段</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        collection:遍历的集合</span></span><br><span class="line"><span class="comment">        item:遍历出来的元素（要和#&#123;&#125;里面的元素一致）</span></span><br><span class="line"><span class="comment">        separator:分隔符</span></span><br><span class="line"><span class="comment">        open:遍历开始前拼接的sql片段</span></span><br><span class="line"><span class="comment">        close:遍历结束后拼接的sql片段</span></span><br><span class="line"><span class="comment">        例如: delete from emp where id in(16,17,18)</span></span><br><span class="line"><span class="comment">     --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;delete&quot;</span>&gt;</span></span><br><span class="line">        delete from emp where id in</span><br><span class="line">        <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;id&quot;</span> <span class="attr">item</span>=<span class="string">&quot;id&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span> <span class="attr">open</span>=<span class="string">&quot;(&quot;</span> <span class="attr">close</span>=<span class="string">&quot;)&quot;</span>&gt;</span></span><br><span class="line">            #&#123;id&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>4.sql片段</p>
+<p><sql>:定义可重用的sql片段</p>
+<p><include>:通过属性refid,指定包含的sql片段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;sql id=&quot;commonSelect&quot;&gt;</span><br><span class="line">	select * from emp</span><br><span class="line">&lt;/sql&gt;</span><br><span class="line">&lt;select id=&quot;list&quot; resultType=&quot;com.itheima.pojo.Emp&quot;&gt;</span><br><span class="line">        &lt;include refid=&quot;commonSelect&quot;/&gt;</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">            &lt;if test=&quot;name!=null&quot;&gt;</span><br><span class="line">                name like concat(&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)</span><br><span class="line">            &lt;/if&gt;</span><br><span class="line">            &lt;if test=&quot;gender!=null&quot;&gt;</span><br><span class="line">                and gender = #&#123;gender&#125;</span><br><span class="line">            &lt;/if&gt;</span><br><span class="line">            &lt;if test=&quot;begin != null and end != null&quot;&gt;</span><br><span class="line">                and entrydate between #&#123;begin&#125; and #&#123;end&#125;</span><br><span class="line">            &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">        order by update_time desc</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2026/03/20/SpringBootWeb/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/2026-01-31-12-00-49-960x640.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/JAVA/">
+                    JAVA
+                </a>
+            </div>
+            <h5>
+                <a href="/2026/03/20/SpringBootWeb/" class="trm-anima-link">
+                    SpringBootWeb
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/03/20</li>
+                <li>00:11</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.6
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="Mybatis"><a rel="nofollow" class="trm-toc-link" href="#Mybatis"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Mybatis</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="Mybatis使用步骤："><a rel="nofollow" class="trm-toc-link" href="#Mybatis使用步骤："><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">Mybatis使用步骤：</span></a></li><li class="trm-toc-item trm-toc-level-2" title="配置SQL提示"><a rel="nofollow" class="trm-toc-link" href="#配置SQL提示"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">配置SQL提示</span></a></li><li class="trm-toc-item trm-toc-level-2" title="数据库连接池"><a rel="nofollow" class="trm-toc-link" href="#数据库连接池"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">数据库连接池</span></a></li><li class="trm-toc-item trm-toc-level-2" title="lombok"><a rel="nofollow" class="trm-toc-link" href="#lombok"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">lombok</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Mybatis基础操作"><a rel="nofollow" class="trm-toc-link" href="#Mybatis基础操作"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">Mybatis基础操作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="参数占位符："><a rel="nofollow" class="trm-toc-link" href="#参数占位符："><span class="trm-toc-number">1.5.1.</span> <span class="trm-toc-text">参数占位符：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="预编译SQL"><a rel="nofollow" class="trm-toc-link" href="#预编译SQL"><span class="trm-toc-number">1.5.2.</span> <span class="trm-toc-text">预编译SQL</span></a></li><li class="trm-toc-item trm-toc-level-3" title="根据主键删除"><a rel="nofollow" class="trm-toc-link" href="#根据主键删除"><span class="trm-toc-number">1.5.3.</span> <span class="trm-toc-text">根据主键删除</span></a></li><li class="trm-toc-item trm-toc-level-3" title="新增"><a rel="nofollow" class="trm-toc-link" href="#新增"><span class="trm-toc-number">1.5.4.</span> <span class="trm-toc-text">新增</span></a></li><li class="trm-toc-item trm-toc-level-3" title="查询（根据ID查询）"><a rel="nofollow" class="trm-toc-link" href="#查询（根据ID查询）"><span class="trm-toc-number">1.5.5.</span> <span class="trm-toc-text">查询（根据ID查询）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="查询（根据条件查询）"><a rel="nofollow" class="trm-toc-link" href="#查询（根据条件查询）"><span class="trm-toc-number">1.5.6.</span> <span class="trm-toc-text">查询（根据条件查询）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="XML映射文件"><a rel="nofollow" class="trm-toc-link" href="#XML映射文件"><span class="trm-toc-number">1.5.7.</span> <span class="trm-toc-text">XML映射文件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="动态SQL"><a rel="nofollow" class="trm-toc-link" href="#动态SQL"><span class="trm-toc-number">1.5.8.</span> <span class="trm-toc-text">动态SQL</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.6"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.6"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
