@@ -520,29 +520,49 @@
 
                     <!-- footer -->
                     <footer class="trm-footer-card trm-scroll-animation">
-
-    
-
-    
-
-    
-        <div class="trm-footer-item">
-            <span>
-                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0
-            </span>
-            <span class="footer-separator" data-separator=" | "></span>
-            <span> 
-                主题 - 
-                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
-                v2.2.6
-            </span>
-        </div>
-      
-
-     
-
-     
+    <!-- 仅保留网站运行时间显示区域 -->
+    <div class="trm-footer-item blog-run-long"></div>
 </footer>
+
+<!-- 运行时间计算脚本 -->
+<script>
+(function() {
+    // 设置你的网站启动日期（请修改为实际启动日期）
+    const launchDate = new Date('2025-07-25T15:30:00');
+
+    function updateRuntime() {
+        // 每次都重新查询元素：主题 swup(pjax) 切换页面时会替换页脚 DOM
+        const runtimeElement = document.querySelector('.blog-run-long');
+        if (!runtimeElement) return;
+
+        const now = new Date();
+        const timeDiff = now - launchDate;
+
+        // 计算天、时、分、秒
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        // 显示运行时间
+        runtimeElement.textContent = `本网站已运行 ${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
+    }
+
+    function initRuntime() {
+        // 避免脚本被重复执行时创建多个定时器
+        if (window.__blogRuntimeTimer__) clearInterval(window.__blogRuntimeTimer__);
+        updateRuntime();
+        window.__blogRuntimeTimer__ = setInterval(updateRuntime, 1000);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRuntime);
+    } else {
+        initRuntime();
+    }
+})();
+</script>
+
                     <!-- footer end -->
 
                 </div>
