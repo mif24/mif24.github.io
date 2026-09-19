@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+
+
+
+<title >什么是AI_agent</title>
+
+<!-- Favicon -->
+
+    <link href='/log.svg?v=2.2.6' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/log.svg?v=2.2.6' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/log.svg?v=2.2.6' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["mif Website"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"log.svg","icon16":"log.svg","icon32":"log.svg","apple_touch_icon":"log.svg","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":true,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-09-20 00:34:51"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+<link rel="stylesheet" href="//unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/log.svg">
+    
+    
+        <div class="trm-logo-text">
+            M<span>IF</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/" target="">
+                            分类
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/normal/" target="">
+                    闲杂
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://images.pexels.com/photos/16158249/pexels-photo-16158249.jpeg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            Welcome to 知识库
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            什么是AI_agent
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2026
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/cat.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        MIF
+    </h5>
+    
+        <div class="trm-label">
+            My
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/mif24" title="github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                planet:
+            </div>
+            <div class="trm-label trm-label-light">
+                Neptune
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                4
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:351769531@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            09/19
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            22:29
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="什么是AI-agent"><a href="#什么是AI-agent" class="headerlink" title="什么是AI_agent"></a>什么是AI_agent</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本笔记主要学习于《深入理解 AI Agent》</p>
+<p>一些简单概念可能使用到：</p>
+<ul>
+<li><strong>KV Cache</strong>：KV Cache（键值缓存）用显存空间换计算时间，避免在逐字生成（Generation）过程中对历史已处理过的 Token 重复执行矩阵乘法计算。</li>
+<li><strong>缓存命中（Cache Hit）</strong>：当 Agent 或底层大模型（LLM）发起一次计算、检索、推理或工具调用请求时，系统发现<strong>相同或语义相似的输入&#x2F;状态在之前已经处理过</strong>，可以直接复用已保存的结果，而无需重新执行耗时的计算或调用。</li>
+</ul>
+<h2 id="核心公式：Agent-LLM-上下文-工具"><a href="#核心公式：Agent-LLM-上下文-工具" class="headerlink" title="核心公式：Agent &#x3D; LLM + 上下文 + 工具"></a>核心公式：Agent &#x3D; LLM + 上下文 + 工具</h2><p>三者缺一不可。</p>
+<ul>
+<li><strong>LLM</strong>：大语言模型，相当于整个Agent的大脑。</li>
+<li><strong>上下文</strong>：记忆，指令等，相当于整个Agent的眼睛。Agent的上下文窗口即为当前AI所能看到、记忆的一切。</li>
+<li><strong>工具</strong>：代码，执行等，相当于整个Agent的手脚。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Agent = LLM + [上下文 + 工具 + 约束 + 验证 + 纠正]</span><br><span class="line">     = Model + Harness</span><br><span class="line"># 两种表示：Model 对应 LLM，Harness 对应 [上下文 + 工具 + 约束 + 验证 + 纠正]</span><br></pre></td></tr></table></figure>
+
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>Agent 的工具：</p>
+<ol>
+<li><strong>感知工具</strong><ul>
+<li>多模态视觉感知工具 (Visual Perception)</li>
+<li>音频与语音感知工具 (Auditory Perception)</li>
+<li>数字环境与GUI界面感知工具 (Digital &amp; GUI Perception)，注：在操作系统、浏览器或独立软件中充当Agent的”屏幕查看器”，支持自动化操作（OS Agent &#x2F; Web Agent）</li>
+<li>信息检索与动态知识感知工具 (External Knowledge Perception)</li>
+</ul>
+</li>
+<li><strong>执行工具</strong>：代码执行、文件操作、系统命令、外部 API 调用</li>
+<li><strong>协作工具</strong>：在关键决策点请求人类确认，让 Agent 与其他 Agent 分工合作。</li>
+</ol>
+<p>工具的使用质量和数量决定了Agent的能力上限，清晰的接口，工具调用能让AI发挥全部的能力。<strong>MCP</strong>（Model Context Protocol，模型上下文协议）让工具的接入变得和安装插件一样，例如金融消息查看可以安装iFinD、通达信等。</p>
+<h2 id="Agent-的学习机制"><a href="#Agent-的学习机制" class="headerlink" title="Agent 的学习机制"></a>Agent 的学习机制</h2><p>Agent 的行为如何发生改变？</p>
+<ol>
+<li>任务内适应：当前上下文（实例、状态、检索结果）</li>
+<li>外部制品更新：知识·指令·程序（文档、Prompt（提示词）、skill、Harness）</li>
+<li>模型参数更新：模型权重：SFT · 偏好训练 · RL</li>
+</ol>
+<p>把事实和经验整理为知识文档，把可语言化的策略写进Prompt 或 Skill，把确定性流程与约束写成程序和 Harness。</p>
+<h2 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h2><p>上下文：决定 Agent 能力上限的关键（更丰富的上下文，更准确、更高信噪比的上下文工程与状态感知）</p>
+<p>以下五个部分构成：</p>
+<ol>
+<li><strong>Prompt</strong>：定义AI的身份、权限和行为准则。系统提示词中还会包含跨会话保存的用户记忆（用户偏好、历史行为、背景设定等个性化信息）和动态注入的环境状态。</li>
+<li><strong>工具定义</strong></li>
+<li><strong>用户消息</strong>：用户消息中还可能包含通过 RAG（检索增强生成，Retrieval-Augmented Generation）动态检索引入的外部知识——覆盖训练数据截止后的信息或私有领域知识。</li>
+<li><strong>模型回复</strong>：模型生成的回复，最多包含三个部分：<ol>
+<li>思维链</li>
+<li>文本内容</li>
+<li>工具调用请求</li>
+</ol>
+</li>
+<li><strong>工具执行结果</strong></li>
+</ol>
+<p>前两项（系统提示词 + 工具定义）是静态前缀，后三项（用户消息 + 模型回复 + 工具执行结果）的轨迹是随交互不断增长的动态消息历史。这五个部分共同构成了 LLM 每次推理时的上下文。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260919231900271.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260919233215338.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>上半部分（System Prompt + Tool Definitions）在整个对话过程中保持不变，下半部分（对话历史）随着交互的进行不断增长</p>
+<p>三条核心结论：</p>
+<ol>
+<li><strong>系统提示词和工具定义一旦确定就不要改</strong>。任何改动，哪怕多一个空格，都会导致缓存全部失效，延迟成倍增加、成本上升（具体幅度视模型与配置而定）。</li>
+<li><strong>动态信息永远追加到末尾</strong>——时间戳、用户状态等变化的内容，作为新消息追加到对话末尾，而不是修改已有的系统提示词。</li>
+<li>使用标准 API 格式，不要自行拼接消息：结构化消息会被 Chat Template 翻译成模型训练时见过的固定token 序列；自行用字符串拼成 “USER: … ASSISTANT: …” 的根本问题是偏离了这种训练格式，会削弱模型的多步思考能力。至于缓存——它只认 token 字节序列，只要拼出的前缀字节级稳定，照样能命中；但若拼接方式不稳定（如每次向前缀注入动态内容），缓存也会随之失效。</li>
+</ol>
+<h2 id="ReAct-循环"><a href="#ReAct-循环" class="headerlink" title="ReAct 循环"></a>ReAct 循环</h2><p>ReAct 循环就是将 LLM、上下文和工具串联起来的核心机制：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求 → 工具调用 → 执行 → 送回结果 → 再请求</span><br></pre></td></tr></table></figure>
+
+<p><strong>Agent 的上下文 &#x3D; 静态前缀 + 轨迹</strong></p>
+<p>以下是一个最简 Agent 实现：</p>
+<p><strong>完整的 Agent 核心循环实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line"></span><br><span class="line">client = OpenAI()</span><br><span class="line"></span><br><span class="line"><span class="comment"># ──Tool definitions ──</span></span><br><span class="line">tools = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;function&quot;</span>,</span><br><span class="line">        <span class="string">&quot;function&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;get_current_time&quot;</span>,</span><br><span class="line">            <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Get the current date and time in a specific timezone&quot;</span>,</span><br><span class="line">            <span class="string">&quot;parameters&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;type&quot;</span>: <span class="string">&quot;object&quot;</span>,</span><br><span class="line">                <span class="string">&quot;properties&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;timezone&quot;</span>: &#123;<span class="string">&quot;type&quot;</span>: <span class="string">&quot;string&quot;</span>, <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Timezone name, e.g. America/Vancouver&quot;</span>&#125;</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;function&quot;</span>,</span><br><span class="line">        <span class="string">&quot;function&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;get_weather&quot;</span>,</span><br><span class="line">            <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Get the current weather for a specific city&quot;</span>,</span><br><span class="line">            <span class="string">&quot;parameters&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;type&quot;</span>: <span class="string">&quot;object&quot;</span>,</span><br><span class="line">                <span class="string">&quot;properties&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;city&quot;</span>: &#123;<span class="string">&quot;type&quot;</span>: <span class="string">&quot;string&quot;</span>, <span class="string">&quot;description&quot;</span>: <span class="string">&quot;City name&quot;</span>&#125;,</span><br><span class="line">                    <span class="string">&quot;unit&quot;</span>: &#123;<span class="string">&quot;type&quot;</span>: <span class="string">&quot;string&quot;</span>, <span class="string">&quot;enum&quot;</span>: [<span class="string">&quot;celsius&quot;</span>, <span class="string">&quot;fahrenheit&quot;</span>]&#125;,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># ──Tool execution function (stub with canned results; a real implementation</span></span><br><span class="line"><span class="comment"># must parse the JSON `arguments` and call actual APIs) ──</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">execute_tool</span>(<span class="params">name, arguments</span>):</span><br><span class="line">    <span class="keyword">if</span> name == <span class="string">&quot;get_current_time&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#123;&quot;datetime&quot;: &quot;2025-09-13T05:18:47&quot;, &quot;day_of_week&quot;: &quot;Saturday&quot;&#125;&#x27;</span></span><br><span class="line">    <span class="keyword">elif</span> name == <span class="string">&quot;get_weather&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#123;&quot;temperature&quot;: 13.2, &quot;unit&quot;: &quot;celsius&quot;, &quot;conditions&quot;: &quot;clear&quot;, &quot;humidity&quot;: 93&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ──Initial message list ──</span></span><br><span class="line">messages = [</span><br><span class="line">    &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful assistant. Use tools to get real-time information when needed.&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;What&#x27;s the current time and weather in Vancouver?&quot;</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># ──Agent core loop ──</span></span><br><span class="line"><span class="comment"># Production code needs a max_iterations cap here: as discussed later in</span></span><br><span class="line"><span class="comment"># this chapter, Agents can get stuck repeating the same tool calls forever</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    response = client.chat.completions.create(</span><br><span class="line">        model=<span class="string">&quot;Qwen3-0.6B&quot;</span>, messages=messages, tools=tools</span><br><span class="line">    )</span><br><span class="line">    assistant_message = response.choices[<span class="number">0</span>].message</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Append model&#x27;s response to message list (whether text or tool calls)</span></span><br><span class="line">    messages.append(assistant_message)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># If no tool calls requested, the model has produced its final response</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> assistant_message.tool_calls:</span><br><span class="line">        <span class="built_in">print</span>(assistant_message.content)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Execute each tool requested by the model, append results to message list</span></span><br><span class="line">    <span class="keyword">for</span> tool_call <span class="keyword">in</span> assistant_message.tool_calls:</span><br><span class="line">        result = execute_tool(tool_call.function.name, tool_call.function.arguments)</span><br><span class="line">        messages.append(&#123;</span><br><span class="line">            <span class="string">&quot;role&quot;</span>: <span class="string">&quot;tool&quot;</span>,</span><br><span class="line">            <span class="string">&quot;tool_call_id&quot;</span>: tool_call.<span class="built_in">id</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: result,</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Return to top of loop, call model again with updated message list</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始 messages 列表（结构示意，非可运行代码）</span></span><br><span class="line">messages = [</span><br><span class="line">    &#123; role: <span class="string">&quot;system&quot;</span>,</span><br><span class="line">      content: <span class="string">&quot;You are a helpful assistant...&quot;</span> &#125;,           <span class="comment"># 开发者写的</span></span><br><span class="line">    &#123; role: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">      content: <span class="string">&quot;What&#x27;s the current time and weather in Vancouver?&quot;</span> &#125;,  <span class="comment"># 用户输入</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第 1 次调用后的 messages 列表（模型返回工具调用；结构示意，非可运行代码）</span></span><br><span class="line">messages = [</span><br><span class="line">    &#123; role: <span class="string">&quot;system&quot;</span>,</span><br><span class="line">      content: <span class="string">&quot;...&quot;</span> &#125;,</span><br><span class="line">    &#123; role: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">      content: <span class="string">&quot;What&#x27;s the current time...&quot;</span> &#125;,</span><br><span class="line">    &#123; role: <span class="string">&quot;assistant&quot;</span>, tool_calls: [get_current_time, get_weather] &#125;,  <span class="comment"># + Generated by model</span></span><br><span class="line">    &#123; role: <span class="string">&quot;tool&quot;</span>,</span><br><span class="line">      tool_call_id: <span class="string">&quot;call_abc&quot;</span>, content: <span class="string">&quot;&#123;time...&#125;&quot;</span> &#125;,                 <span class="comment"># + Executed by framework</span></span><br><span class="line">    &#123; role: <span class="string">&quot;tool&quot;</span>,</span><br><span class="line">      tool_call_id: <span class="string">&quot;call_def&quot;</span>, content: <span class="string">&quot;&#123;weather...&#125;&quot;</span> &#125;,              <span class="comment"># + Executed by framework</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第 2 次调用后的 messages 列表（模型返回最终回复，循环结束；结构示意，非可运行代码）</span></span><br><span class="line">messages = [</span><br><span class="line">    &#123; role: <span class="string">&quot;system&quot;</span>,</span><br><span class="line">      content: <span class="string">&quot;...&quot;</span> &#125;,</span><br><span class="line">    &#123; role: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">      content: <span class="string">&quot;What&#x27;s the current time...&quot;</span> &#125;,</span><br><span class="line">    &#123; role: <span class="string">&quot;assistant&quot;</span>, tool_calls: [get_current_time, get_weather] &#125;,</span><br><span class="line">    &#123; role: <span class="string">&quot;tool&quot;</span>,</span><br><span class="line">      tool_call_id: <span class="string">&quot;call_abc&quot;</span>, content: <span class="string">&quot;&#123;time...&#125;&quot;</span> &#125;,</span><br><span class="line">    &#123; role: <span class="string">&quot;tool&quot;</span>,</span><br><span class="line">      tool_call_id: <span class="string">&quot;call_def&quot;</span>, content: <span class="string">&quot;&#123;weather...&#125;&quot;</span> &#125;,</span><br><span class="line">    &#123; role: <span class="string">&quot;assistant&quot;</span>, content: <span class="string">&quot;It&#x27;s currently Saturday, Sep 13, 2025 in Vancouver...&quot;</span> &#125;,  <span class="comment"># + Final reply</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>Agent 框架的核心工作就是管理这个 messages 列表——在合适的时机往里追加消息，然后把整个列表送给模型。</p>
+<h2 id="Harness-五个功能的核心原则"><a href="#Harness-五个功能的核心原则" class="headerlink" title="Harness 五个功能的核心原则"></a>Harness 五个功能的核心原则</h2><ol>
+<li><strong>上下文：信息充分性</strong><ul>
+<li>信息充分性：让 Agent 在每个决策点都基于足够的信息判断</li>
+<li>系统提示词、知识库、Agent 状态栏、Sidecar 旁路查询</li>
+</ul>
+</li>
+<li><strong>工具：接口清晰</strong><ul>
+<li>接口清晰：工具命名直观、参数有例子、边界有说明</li>
+<li>MCP 工具、代码解释器、搜索工具</li>
+</ul>
+</li>
+<li><strong>约束：故障安全默认值</strong><ul>
+<li>故障安全默认值：所有能力默认关闭，必须显式开放</li>
+<li>需要用户授权才能执行</li>
+</ul>
+</li>
+<li><strong>验证：输入隔离</strong><ul>
+<li>输入隔离：安全检查只看结构化数据（如工具返回的JSON 字段），而不是模型自由生成的文本（因为攻击者可能通过提示注入操纵模型输出）</li>
+<li>Linter 检查、类型系统、工具调用结果校验</li>
+</ul>
+</li>
+<li><strong>纠正</strong><ul>
+<li>在确认无法恢复之前，不暴露中间态（例如工具调用失败时先静默重试，不将半成品结果展示给用户）</li>
+<li>静默重试、接续生成、连续失败时回退到人工判断（熔断机制）</li>
+</ul>
+</li>
+</ol>
+<h2 id="提示工程：优化系统提示词"><a href="#提示工程：优化系统提示词" class="headerlink" title="提示工程：优化系统提示词"></a>提示工程：优化系统提示词</h2><p>核心对象是系统提示词（System Prompt），定义了 Agent 的身份、行为规则、约束条件和工作流程</p>
+<h3 id="语气与风格：系统提示词的”人格”"><a href="#语气与风格：系统提示词的”人格”" class="headerlink" title="语气与风格：系统提示词的”人格”"></a>语气与风格：系统提示词的”人格”</h3><p>要求AI简洁回答，具体要求（不要解释为什么不能做，会让AI陷入冗长的自我辩护），具体提醒（比如使用大写字母等），但过度使用会导致效果被稀释，应保留给真正关键的约束</p>
+<h3 id="结构化提示：系统提示词的”格式”"><a href="#结构化提示：系统提示词的”格式”" class="headerlink" title="结构化提示：系统提示词的”格式”"></a>结构化提示：系统提示词的”格式”</h3><p>现代大语言模型对结构化输入展现出显著的敏感性，<strong>这源于训练数据中包含大量的结构化内容</strong>。</p>
+<p>XML 标签的使用遵循层次化原则，其标签名称本身就携带语义信息——<code>&lt;working_directory&gt;</code> 能立即告诉模型这是工作目录信息，而纯文本格式”当前目录：&#x2F;Users&#x2F;project&#x2F;src”则需要模型做额外的思考来理解冒号前后的关系。</p>
+<p><strong>Markdown</strong> 在保持可读性的同时提供了轻量级的结构，特别适合组织层次化的指令和信息。XML 和 Markdown协同配合，创造了一种双层结构：XML 负责机器可解析的精确语义，Markdown 负责人机共读的组织逻辑。</p>
+<blockquote>
+<p>注：能用Markdown文件的尽可能使用Markdown文件类型，到最后一步再指定生成的文件类型。</p>
+</blockquote>
+<h2 id="动态提示词与-Agent-Skills"><a href="#动态提示词与-Agent-Skills" class="headerlink" title="动态提示词与 Agent Skills"></a>动态提示词与 Agent Skills</h2><p><img src="https://cdn.jsdelivr.net/gh/mif24/image-bed@main/images/image-20260920000730439.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>全部塞进一个提示词会造成：浪费 token、注意力被稀释</p>
+<p>Agent Skills 的核心思想是将 Agent 的能力模块化为独立的、可按需加载的知识包。</p>
+<ol>
+<li><strong>第一层（元数据）</strong>：每个 Skill 必须包含一个 SKILL.md 文件，开头是 YAML frontmatter（即文件顶部用 <code>---</code> 分隔的元数据块，类似书籍的版权页），包含 name 和 description 两个字段。Agent 框架在启动时扫描所有已安装的 Skill，将它们的 name 和 description（仅占数百个 token）注入到对话上下文中（注入位置的设计权衡见下一小节），使 Agent 在不消耗大量上下文的前提下知晓自己拥有哪些专业能力。</li>
+<li><strong>第二层（核心流程）</strong>：当 Agent 判断某个任务需要特定的 Skill 时，通过专用的 Skill 工具加载完整的 SKILL.md，内容作为 tool result 出现在对话历史中。</li>
+<li><strong>第三层（细则）</strong>：通过文件引用深入到更详细的子文档。Agent 会根据具体的需求选择性地深入阅读相关的子文档。</li>
+</ol>
+<p>Skill 内容放在上下文的什么位置：</p>
+<ul>
+<li><strong>方式一：注入系统提示词（system 消息）</strong>：Skill 的执行效果最好。但问题在于：每次加载新的 Skill 都会改变 system 消息的内容，导致 KV Cache 前缀失效。如果 Agent 频繁切换 Skill（比如一个任务需要先用搜索 Skill，再用文档 Skill），缓存会反复失效，延迟和成本显著增加。</li>
+<li><strong>方式二：作为普通文件读取</strong>：内容出现在上下文中间，对模型的指令遵循（instruction following）能力提出了更高要求。</li>
+<li><strong>方式三（生产实现）：元数据注入上下文末尾</strong>，完整内容通过专用工具按需加载。</li>
+</ul>
+<p>Skills 机制对 KV Cache 极为友好。</p>
+<h2 id="上下文压缩策略"><a href="#上下文压缩策略" class="headerlink" title="上下文压缩策略"></a>上下文压缩策略</h2><p><strong>压缩动机</strong>：解决长度约束和成本约束、提升思考质量——总结后的知识比原始形式更利于模型使用</p>
+<p>上下文学习的内部机制：<strong>检索而非推理</strong></p>
+<p>假设上下文中包含一段宠物店的巡查记录：笼子 1：黑猫。笼子 2：白猫。笼子 3：黑猫。笼子 4：黑猫。笼子 5：白猫。⋯⋯（共 100 个笼子，其中 90 只黑猫、10 只白猫）</p>
+<p>当你问模型”黑猫和白猫各有多少只？”时，如果不启用思维链（Thinking），模型很难直接给出正确答案——因为注意力机制擅长的是查找（”笼子 37 里是什么猫？”），而不是统计归纳（”总共有多少只黑猫？”）。后者需要遍历所有记录并维护计数状态，这本质上是思考而非检索。</p>
+<p>如果启用思维链，模型可以通过逐个数数来得到正确答案——但代价是每一次被问到这个问题，都需要重新从头数一遍，产生大量的思考 token。</p>
+<p>而如果我们提前做一次总结，在上下文中直接写入”当前统计：黑猫 90 只，白猫 10 只”，模型就能立即检索到这个结论，无需重新思考。这就是压缩的第二个价值：<strong>把需要思考才能得到的结论变成可以直接检索的知识。</strong></p>
+<h3 id="压缩策略的设计原则"><a href="#压缩策略的设计原则" class="headerlink" title="压缩策略的设计原则"></a>压缩策略的设计原则</h3><ol>
+<li>信息价值的非均匀分布</li>
+<li>语义完整性</li>
+<li>任务相关性</li>
+<li>压缩即理解</li>
+</ol>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2026/09/19/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86%E5%92%8C%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://images.pexels.com/photos/16158249/pexels-photo-16158249.jpeg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E7%9F%A5%E8%AF%86/">
+                    知识
+                </a>
+            </div>
+            <h5>
+                <a href="/2026/09/19/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86%E5%92%8C%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" class="trm-anima-link">
+                    个人管理和项目管理
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/09/19</li>
+                <li>00:19</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+    <!-- 仅保留网站运行时间显示区域 -->
+    <div class="trm-footer-item blog-run-long"></div>
+</footer>
+
+<!-- 运行时间计算脚本 -->
+<script>
+(function() {
+    // 设置你的网站启动日期（请修改为实际启动日期）
+    const launchDate = new Date('2025-07-25T15:30:00');
+
+    function updateRuntime() {
+        // 每次都重新查询元素：主题 swup(pjax) 切换页面时会替换页脚 DOM
+        const runtimeElement = document.querySelector('.blog-run-long');
+        if (!runtimeElement) return;
+
+        const now = new Date();
+        const timeDiff = now - launchDate;
+
+        // 计算天、时、分、秒
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        // 显示运行时间
+        runtimeElement.textContent = `本网站已运行 ${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
+    }
+
+    function initRuntime() {
+        // 避免脚本被重复执行时创建多个定时器
+        if (window.__blogRuntimeTimer__) clearInterval(window.__blogRuntimeTimer__);
+        updateRuntime();
+        window.__blogRuntimeTimer__ = setInterval(updateRuntime, 1000);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRuntime);
+    } else {
+        initRuntime();
+    }
+})();
+</script>
+
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="什么是AI_agent"><a rel="nofollow" class="trm-toc-link" href="#什么是AI-agent"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">什么是AI_agent</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="前言"><a rel="nofollow" class="trm-toc-link" href="#前言"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">前言</span></a></li><li class="trm-toc-item trm-toc-level-2" title="核心公式：Agent &#x3D; LLM + 上下文 + 工具"><a rel="nofollow" class="trm-toc-link" href="#核心公式：Agent-LLM-上下文-工具"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">核心公式：Agent &#x3D; LLM + 上下文 + 工具</span></a></li><li class="trm-toc-item trm-toc-level-2" title="工具"><a rel="nofollow" class="trm-toc-link" href="#工具"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">工具</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Agent 的学习机制"><a rel="nofollow" class="trm-toc-link" href="#Agent-的学习机制"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">Agent 的学习机制</span></a></li><li class="trm-toc-item trm-toc-level-2" title="上下文"><a rel="nofollow" class="trm-toc-link" href="#上下文"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">上下文</span></a></li><li class="trm-toc-item trm-toc-level-2" title="ReAct 循环"><a rel="nofollow" class="trm-toc-link" href="#ReAct-循环"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">ReAct 循环</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Harness 五个功能的核心原则"><a rel="nofollow" class="trm-toc-link" href="#Harness-五个功能的核心原则"><span class="trm-toc-number">1.7.</span> <span class="trm-toc-text">Harness 五个功能的核心原则</span></a></li><li class="trm-toc-item trm-toc-level-2" title="提示工程：优化系统提示词"><a rel="nofollow" class="trm-toc-link" href="#提示工程：优化系统提示词"><span class="trm-toc-number">1.8.</span> <span class="trm-toc-text">提示工程：优化系统提示词</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="语气与风格：系统提示词的”人格”"><a rel="nofollow" class="trm-toc-link" href="#语气与风格：系统提示词的”人格”"><span class="trm-toc-number">1.8.1.</span> <span class="trm-toc-text">语气与风格：系统提示词的”人格”</span></a></li><li class="trm-toc-item trm-toc-level-3" title="结构化提示：系统提示词的”格式”"><a rel="nofollow" class="trm-toc-link" href="#结构化提示：系统提示词的”格式”"><span class="trm-toc-number">1.8.2.</span> <span class="trm-toc-text">结构化提示：系统提示词的”格式”</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="动态提示词与 Agent Skills"><a rel="nofollow" class="trm-toc-link" href="#动态提示词与-Agent-Skills"><span class="trm-toc-number">1.9.</span> <span class="trm-toc-text">动态提示词与 Agent Skills</span></a></li><li class="trm-toc-item trm-toc-level-2" title="上下文压缩策略"><a rel="nofollow" class="trm-toc-link" href="#上下文压缩策略"><span class="trm-toc-number">1.10.</span> <span class="trm-toc-text">上下文压缩策略</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="压缩策略的设计原则"><a rel="nofollow" class="trm-toc-link" href="#压缩策略的设计原则"><span class="trm-toc-number">1.10.1.</span> <span class="trm-toc-text">压缩策略的设计原则</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+<script src="https://npm.elemecdn.com/swup@2.0.19/dist/swup.min.js"></script>
+
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.6"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.6"></script>
+
+<!-- CDN -->
+
+
+    
+<script src="//unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+
+
+    
+
+    
+
+
+<div id="aplayer-fixed"></div>
+<script>
+(function () {
+  // 防止脚本被重复执行时创建多个播放器
+  if (window.__apFixed__) return;
+  window.__apFixed__ = true;
+
+  var apFixed = new APlayer({
+    element: document.getElementById('aplayer-fixed'),
+    mutex: true,
+    theme: '#97dffd',
+    order: 'random',
+    lrcType: 0,
+    fixed: true,
+  });
+  window.apFixed = apFixed;
+
+  // Meting API 数据源列表：按优先级排序，前面的失败自动切换后面的。
+  // 说明：网易云部分曲目有版权限制，不同 API 实例的解析能力不同，
+  // 多数据源回退可以显著提高歌曲可用率。
+  var PLAYLIST_ID = '17867374316';
+  var METING_APIS = [
+    'https://api.injahow.cn/meting/?server=netease&type=playlist&id=' + PLAYLIST_ID,
+    'https://api.i-meto.com/meting/api?server=netease&type=playlist&id=' + PLAYLIST_ID,
+  ];
+  var REQUEST_TIMEOUT = 12000; // 单个 API 请求超时（毫秒）
+  var RETRY_DELAY = 30000;     // 全部数据源失败后的重试间隔（毫秒）
+
+  // 带超时的 JSON 请求，失败（网络错误/超时/非200/解析失败）统一走 reject
+  function fetchJson(url) {
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      var timer = setTimeout(function () {
+        xhr.abort();
+        reject(new Error('timeout'));
+      }, REQUEST_TIMEOUT);
+
+      xhr.open('get', url);
+      xhr.addEventListener('load', function () {
+        clearTimeout(timer);
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          try {
+            resolve(JSON.parse(xhr.responseText));
+          } catch (e) {
+            reject(e);
+          }
+        } else {
+          reject(new Error('HTTP ' + xhr.status));
+        }
+      });
+      xhr.addEventListener('error', function () {
+        clearTimeout(timer);
+        reject(new Error('network error'));
+      });
+      xhr.send(null);
+    });
+  }
+
+  // 数据清洗：过滤掉没有可播放地址的条目
+  function sanitize(list) {
+    if (!Array.isArray(list)) return [];
+    return list.filter(function (item) {
+      return item && typeof item.url === 'string' && item.url.indexOf('http') === 0;
+    });
+  }
+
+  function loadPlaylist(apiIndex) {
+    if (apiIndex >= METING_APIS.length) {
+      // 所有数据源都失败，稍后整体重试一轮
+      console.error('[aplayer] 所有 Meting API 均不可用，' + (RETRY_DELAY / 1000) + 's 后重试');
+      setTimeout(function () { loadPlaylist(0); }, RETRY_DELAY);
+      return;
+    }
+
+    fetchJson(METING_APIS[apiIndex])
+      .then(function (data) {
+        var list = sanitize(data);
+        if (list.length === 0) {
+          throw new Error('empty playlist');
+        }
+        apFixed.list.add(list);
+        // 加载成功后挂载错误自动跳歌
+        bindErrorSkip(list.length);
+      })
+      .catch(function (err) {
+        console.warn('[aplayer] 数据源失败(' + err.message + ')，切换下一个');
+        loadPlaylist(apiIndex + 1);
+      });
+  }
+
+  // 某首歌加载失败（如版权受限、直链过期）时自动跳到下一首
+  function bindErrorSkip(playlistLength) {
+    var maxConsecutive = playlistLength; // 连续失败上限：跳完整个列表就停，避免死循环
+    var consecutive = 0;
+
+    apFixed.on('error', function () {
+      consecutive++;
+      if (consecutive <= maxConsecutive) {
+        console.warn('[aplayer] 当前歌曲无法播放，自动切换下一首');
+        // 稍作延迟，等待 APlayer 内部完成错误状态处理
+        setTimeout(function () {
+          apFixed.skipForward();
+        }, 500);
+      }
+    });
+
+    apFixed.on('canplay', function () {
+      consecutive = 0; // 有歌曲正常可播，重置计数
+    });
+  }
+
+  loadPlaylist(0);
+})();
+</script>
+<style>
+  .aplayer.aplayer-fixed,
+  .aplayer.aplayer-fixed .aplayer-body {
+    bottom: 20px;
+    left: 20px;
+  }
+</style>
+
+
+</body>
+
+</html>
